@@ -1,0 +1,10 @@
+.welcome{
+    background: #2193b0;
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+}
+.welcome-message{
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+}
