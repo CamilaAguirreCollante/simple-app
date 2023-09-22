@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDTO } from 'src/app/models/DTOs/user-dto';
 import { DatabaseService } from 'src/app/services/database.service';
+import { encrypt } from 'src/app/util/crypt';
 
 @Component({
   selector: 'app-sign-up',
@@ -34,21 +35,17 @@ export class SignUpComponent {
   }
 
   signUp(){
+    const encryptedPassword = encrypt(this.signUpForm.value.password);
+    //console.log(encryptedPassword);
     let user = new UserDTO(
       this.signUpForm.value.name,
       this.signUpForm.value.lastName,
       this.signUpForm.value.userName,
       this.signUpForm.value.email,
-      this.signUpForm.value.password
+      encryptedPassword
     );
-    console.log(user);
-    this.DBService.table('users').add({
-      name: user.name,
-      lastname: user.lastname,
-      username: user.username,
-      email: user.email,
-      password: user.password
-    });
+    // console.log(user);
+    this.DBService.addUser(user);
   }
 
 }

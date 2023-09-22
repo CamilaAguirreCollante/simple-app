@@ -12,8 +12,6 @@ export class WelcomePageComponent {
   constructor(private router: Router, private DBService: DatabaseService){}
 
   ngOnInit(){
-    //Reset database
-    this.DBService.delete();
   }
   
   navigate(route: string){

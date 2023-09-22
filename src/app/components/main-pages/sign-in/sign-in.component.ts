@@ -30,7 +30,9 @@ export class SignInComponent {
   }
 
   async signIn(){
-    const $data = await this.DBService.table('users').where('username').equals(this.signInForm.value.userName).toArray();
-    console.log($data);
+    const $userFound = await this.DBService.getUser(this.signInForm.value.userName, this.signInForm.value.password);
+    if($userFound!= null){
+       this.navigate('dashboard');
+    } 
   }
 }
