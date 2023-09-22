@@ -30,7 +30,7 @@ export class SignInComponent {
   }
 
   async signIn(){
-    const $userFound = await this.authService.getUser(this.signInForm.value.userName, this.signInForm.value.password);
+    const $userFound = await this.authService.signIn(this.signInForm.value.userName, this.signInForm.value.password);
     if($userFound!= null){
        this.navigate('dashboard');
     } else{

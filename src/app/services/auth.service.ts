@@ -8,6 +8,8 @@ import { decrypt } from '../util/crypt';
 })
 export class AuthService {
 
+  authenticated: boolean = false;
+
   constructor(private DBService: DatabaseService) { }
 
   addUser(user: UserDTO) {
@@ -16,11 +18,12 @@ export class AuthService {
       lastname: user.lastname,
       username: user.username,
       email: user.email,
-      password: user.password
+      password: user.password, 
+      session: false
     }).then(() => console.log("user added")).catch((error) => console.log("Error adding user: ", error));
   }
 
-  async getUser(userName: string, password: string) { 
+  async signIn(userName: string, password: string) { 
     const $userFound = await this.DBService.table('users')
               .where('username')
               .equalsIgnoreCase(userName)
@@ -30,11 +33,19 @@ export class AuthService {
       if (decryptedPassword != null){
         if(decryptedPassword == password){
           console.log("user found and authenticate");
+          await this.DBService.table('users')
+                    .where('userName')
+                    .equalsIgnoreCase(userName)
+                    .modify({session: true})
           return $userFound;
         }
       }
     }
     return null;
+  }
+
+  isAuthenticated(){
+    return true;
   }
 
 
