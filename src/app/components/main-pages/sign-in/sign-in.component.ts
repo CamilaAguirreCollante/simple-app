@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DatabaseService } from 'src/app/services/database.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +15,7 @@ export class SignInComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private DBService: DatabaseService
+    private authService: AuthService
   ){
     this.signInForm = this.fb.group({
       userName: ['', Validators.required],
@@ -30,9 +30,11 @@ export class SignInComponent {
   }
 
   async signIn(){
-    const $userFound = await this.DBService.getUser(this.signInForm.value.userName, this.signInForm.value.password);
+    const $userFound = await this.authService.getUser(this.signInForm.value.userName, this.signInForm.value.password);
     if($userFound!= null){
        this.navigate('dashboard');
-    } 
+    } else{
+      this.signInForm.reset();
+    }
   }
 }

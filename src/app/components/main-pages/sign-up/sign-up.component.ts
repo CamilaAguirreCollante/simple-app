@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserDTO } from 'src/app/models/DTOs/user-dto';
-import { DatabaseService } from 'src/app/services/database.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { encrypt } from 'src/app/util/crypt';
 
 @Component({
@@ -17,7 +17,7 @@ export class SignUpComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private DBService: DatabaseService
+    private authService: AuthService
   ){
     this.signUpForm = this.fb.group({
       name: ['', Validators.required],
@@ -45,7 +45,7 @@ export class SignUpComponent {
       encryptedPassword
     );
     // console.log(user);
-    this.DBService.addUser(user);
+    this.authService.addUser(user);
   }
 
 }
