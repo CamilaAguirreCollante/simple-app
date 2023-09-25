@@ -9,23 +9,38 @@
                         <div class="form-floating col-md-4 p-0 pe-3">
                             <input type="text" class="form-control" id="formName" formControlName="name" placeholder="Nombres">
                             <label for="formName">Nombres</label>
+                            <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('name')?.hasError('required') && signUpForm.get('name')?.touched">
+                                <span>Nombre(s) <strong>obligatorio(s)</strong></span>
+                            </div>
                         </div>
                         <div class="form-floating col-md-4 p-0 pe-3">
                             <input type="text" class="form-control" id="formLastName" formControlName="lastName" placeholder="Apellidos">
                             <label for="formLastName">Apellidos</label>
+                            <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('lastName')?.hasError('required') && signUpForm.get('lastName')?.touched">
+                                <span>Apellido(s) <strong>obligatorio(s)</strong></span>
+                            </div>
                         </div>
                         <div class="form-floating col-md-4 p-0">
                             <input type="text" class="form-control" id="formUserName" formControlName="userName" placeholder="Usuario">
                             <label for="formUserName">Nombre usuario</label>
+                            <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('userName')?.hasError('required') && signUpForm.get('userName')?.touched">
+                                <span>Nombre de usuario <strong>obligatorio</strong></span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-floating mb-4 mx-3">
                         <input type="email" class="form-control" id="formEmail" formControlName="email" placeholder="name@example.com">
                         <label for="formEmail">Correo electrónico</label>
+                        <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('email')?.hasError('required') && signUpForm.get('email')?.touched">
+                            <span>Correo electrónico <strong>obligatorio</strong></span>
+                        </div>
                     </div>
                     <div class="form-floating mb-4 mx-3">
                         <input type="password" class="form-control" id="formPassword" formControlName="password" placeholder="Contraseña">
                         <label for="formPassword">Contraseña</label>
+                        <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('password')?.hasError('required') && signUpForm.get('password')?.touched">
+                            <span>Contraseña <strong>obligatoria</strong></span>
+                        </div>
                     </div>
                     <div class="mb-2 mx-3 d-flex flex-column">
                         <button class="btn btn-primary btn-sm btn-block" type="submit" [disabled]="this.signUpForm.invalid">Registrarse</button>

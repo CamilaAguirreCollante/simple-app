@@ -1,0 +1,9 @@
+.navbar {
+    background: #2193b0;
+    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
+    background: linear-gradient(to right, #6dd5ed, #2193b0);
+}
+
+.navbar-nav>.nav-item.active>.nav-link {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+}

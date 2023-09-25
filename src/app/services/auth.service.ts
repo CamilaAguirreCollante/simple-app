@@ -33,10 +33,9 @@ export class AuthService {
       if (decryptedPassword != null){
         if(decryptedPassword == password){
           console.log("user found and authenticate");
-          await this.DBService.table('users')
-                    .where('userName')
-                    .equalsIgnoreCase(userName)
-                    .modify({session: true})
+          this.DBService.table('users')
+                        .update($userFound.id, {session: true});
+          this.authenticated = true;
           return $userFound;
         }
       }
@@ -44,10 +43,15 @@ export class AuthService {
     return null;
   }
 
-  isAuthenticated(){
-    return true;
+  //signOut(id: number){
+  signOut(){
+    // this.DBService.table('users')
+    //                     .update(id, {session: false});
+    this.authenticated = false;
   }
 
-
+  isAuthenticated(){
+    return this.authenticated;
+  }
 
 }

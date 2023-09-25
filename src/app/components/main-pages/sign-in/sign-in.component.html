@@ -1,8 +1,22 @@
+<!-- Toast -->
+<div class="toast-container position-absolute top-0 end-0">
+    <div class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true" id="signInToast">
+        <div class="toast-header text-bg-danger">
+            <strong class="me-auto">¡Autenticación fallida!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            Usuario o contraseña inválida
+        </div>
+    </div>
+</div>
+<!-- Sign In Component -->
 <div class="signIn vh-100 vw-100 d-flex">
     <div class="row vw-100 d-flex align-items-center">
         <div class="col-6 h-100 d-flex align-items-center justify-content-center">
             <img class="w-50 h-50" src="../../../assets/informacion.png" alt="Image">
         </div>
+        <!-- Sign In Form (user - password) -->
         <div class="col-6 h-100 d-flex align-items-center justify-content-center">
             <div class="formSignIn card shadow-2-strong" style="border-radius: 1rem;">
                 <div class="card-body p-5">
@@ -12,11 +26,17 @@
                             <input type="text" class="form-control" id="formUserName" formControlName="userName"
                                 placeholder="Usuario">
                             <label for="formUserName">Nombre usuario</label>
+                            <div class="ps-1 text-start text-danger" *ngIf="signInForm.get('userName')?.hasError('required') && signInForm.get('userName')?.touched">
+                                <span>Nombre de usuario <strong>obligatorio</strong></span>
+                            </div>
                         </div>
                         <div class="form-floating mb-4 mx-3">
                             <input type="password" class="form-control" id="formPassword" formControlName="password"
                                 placeholder="Contraseña">
                             <label for="formPassword">Contraseña</label>
+                            <div class="ps-1 text-start text-danger" *ngIf="signInForm.get('password')?.hasError('required') && signInForm.get('password')?.touched">
+                                <span>Contraseña <strong>obligatoria</strong></span>
+                            </div>
                         </div>
                         <div class="mb-2 mx-3 d-flex flex-column">
                             <button class="btn btn-primary btn-sm btn-block" type="submit"
@@ -24,7 +44,7 @@
                         </div>
                         <div class="mb-4 mx-3 row justify-content-between">
                             <p>
-                                ¿No tiene cuenta?
+                                ¿No tienes cuenta?
                                 <button type="button" class="btn btn-link"
                                     (click)="navigate('sign-up')">Regístrate</button>
                             </p>

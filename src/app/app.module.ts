@@ -9,6 +9,10 @@ import { SignUpComponent } from './components/main-pages/sign-up/sign-up.compone
 import { SignInComponent } from './components/main-pages/sign-in/sign-in.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './components/home-pages/dashboard/dashboard.component';
+import { NavbarComponent } from './components/reuse/navbar/navbar.component';
+import { HomeComponent } from './components/home-pages/dashboard/home/home.component';
+import { SettingsComponent } from './components/home-pages/dashboard/settings/settings.component';
+import { InformationComponent } from './components/home-pages/dashboard/information/information.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { DashboardComponent } from './components/home-pages/dashboard/dashboard.
     SignUpComponent,
     SignInComponent,
     WelcomePageComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavbarComponent,
+    HomeComponent,
+    SettingsComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule, 

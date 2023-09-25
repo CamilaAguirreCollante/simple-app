@@ -36,7 +36,6 @@ export class SignUpComponent {
 
   signUp(){
     const encryptedPassword = encrypt(this.signUpForm.value.password);
-    //console.log(encryptedPassword);
     let user = new UserDTO(
       this.signUpForm.value.name,
       this.signUpForm.value.lastName,
@@ -44,7 +43,6 @@ export class SignUpComponent {
       this.signUpForm.value.email,
       encryptedPassword
     );
-    // console.log(user);
     this.authService.addUser(user);
   }
 

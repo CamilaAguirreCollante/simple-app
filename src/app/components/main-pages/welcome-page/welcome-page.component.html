@@ -3,13 +3,15 @@
     <div class="welcome-message row  h-25 text-center align-items-center">
         ¡Bienvenido(a)!
     </div>
-    <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-outline-dark btn-lg" routerLink="/sign-in">Iniciar sesión</button>
-            <button type="button" class="btn btn-outline-dark btn-lg" routerLink="/sign-up">Registrarse</button>
+    <div class="container text-center w-50">
+        <div class="row justify-content-between">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg" (click)="navigate('sign-in')">Iniciar sesión</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg" (click)="navigate('sign-up')">Registrarse</button>
+            </div>
         </div>
-        <!-- <div class="col">
-        </div> -->
     </div>
     <div class="row h-25"></div>
 </div>
