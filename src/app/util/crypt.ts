@@ -10,5 +10,9 @@ export const decrypt = <T>(valueEncrypt: string): T | null => {
     if (!valueDecrypt) {
         return null;
     }
-    return JSON.parse(valueDecrypt) as T;
+    try {
+        return JSON.parse(valueDecrypt) as T;
+    } catch(e) {
+        return valueDecrypt as any as T;
+    }
 }
