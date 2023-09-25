@@ -1,3 +1,27 @@
+<!-- Fail Toast -->
+<div class="toast-container position-absolute top-0 end-0">
+    <div class="toast text-bg-danger" role="alert" aria-live="assertive" aria-atomic="true" id="signUpFailToast">
+        <div class="toast-header text-bg-danger">
+            <strong class="me-auto">¡Registro fallido!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{toastMessage}}
+        </div>
+    </div>
+</div>
+<!-- Success Toast -->
+<div class="toast-container position-absolute top-0 end-0">
+    <div class="toast text-bg-success" role="alert" aria-live="assertive" aria-atomic="true" id="signUpToast">
+        <div class="toast-header text-bg-success">
+            <strong class="me-auto">¡Registro exitoso!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            El registro se realizó correctamente.
+        </div>
+    </div>
+</div>
 <div class="signIn vh-100 vw-100 d-flex flex-column">
     <div class="signUp p-5 h-50"></div>
     <div class="d-flex align-items-center justify-content-center">
@@ -26,6 +50,9 @@
                             <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('userName')?.hasError('required') && signUpForm.get('userName')?.touched">
                                 <span>Nombre de usuario <strong>obligatorio</strong></span>
                             </div>
+                            <div class="ps-1 text-start text-info" *ngIf="userNameExist">
+                                <span>Ingrese nuevo nombre de usuario</span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-floating mb-4 mx-3">
@@ -33,6 +60,9 @@
                         <label for="formEmail">Correo electrónico</label>
                         <div class="ps-1 text-start text-danger" *ngIf="signUpForm.get('email')?.hasError('required') && signUpForm.get('email')?.touched">
                             <span>Correo electrónico <strong>obligatorio</strong></span>
+                        </div>
+                        <div class="ps-1 text-start text-info" *ngIf="emailExist">
+                            <span>Ingrese nuevo correo electrónico</span>
                         </div>
                     </div>
                     <div class="form-floating mb-4 mx-3">

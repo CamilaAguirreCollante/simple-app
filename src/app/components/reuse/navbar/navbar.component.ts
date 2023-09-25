@@ -23,4 +23,10 @@ export class NavbarComponent {
     return this.router.isActive(route, true);
   }
 
+  signOut(){
+    if(this.authService.signOut()){
+      this.navigate('sign-in');
+    }
+  }
+
 }
